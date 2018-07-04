@@ -1,6 +1,8 @@
-# my-project
+# 参照Vue实战这本书的最后一个demo
 
 > vue-demo
+>
+> 效果图还可以,练练手
 
 ## Build Setup
 
