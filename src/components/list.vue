@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
-    <p>{{list}}</p>
+    <div class="list-header">
+       
+    </div>
+    <div class="list-lists">
+
+    </div>
   </div>
 </template>
 

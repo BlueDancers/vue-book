@@ -14,7 +14,7 @@ export default new Router({
       component: cart
     },
     {
-        path: '/list',
+        path: '/',
         name: 'list',
         component: list
     },
