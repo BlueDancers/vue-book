@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import cart from '../components/cart.vue'
-import list from '../components/list.vue'
-import product from '../components/product.vue'
+import cart from '../views/cart.vue'
+import list from '../views/list.vue'
+import product from '../views/product.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -19,7 +19,7 @@ export default new Router({
         component: list
     },
     {
-      path: '/product',
+      path: '/product/:id',
       name: 'product',
       component: product
     }
