@@ -1,16 +1,16 @@
 <template>
   <div id="product">
-      <div v-for="item in list" :key="item.id" class="product-list" @click="lookProduct(item)">      <!--使用flex布局-->
-        <div class="product-images">
+      <div v-for="item in list" :key="item.id" class="product-list">      <!--使用flex布局-->
+        <div class="product-images" @click="lookProduct(item)">
           <img :src="item.image" alt="图片">
         </div>
-        <div class="product-info">
+        <div class="product-info" @click="lookProduct(item)">
             <h4>{{item.name}}</h4>
             <p class="product-color" :style="{background:colors[item.color]}"></p>
             <p class="product-cost">￥{{item.cost}}</p>
         </div>
         <div class="product-add-cart">
-          <button>加入购物车</button> 
+          <button @click.prevent="handleCart(item)">加入购物车</button> 
         </div>
       </div> 
   </div>
@@ -44,6 +44,9 @@ export default {
   methods: {
     lookProduct(list) {
       this.$router.push('./product/' + list.id)
+    },
+    handleCart (item) {
+      this.$store.commit('setaddCar',item)       //使用vuex添加进购物车  
     }
   }
 }

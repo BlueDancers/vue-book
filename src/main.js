@@ -15,9 +15,9 @@ new Vue({
   template: '<App/>'
 })
 
-router.beforeEach((to, from, next) => {
-  console.log(to);    //即将要进入的路由对象
-  console.log(from);  //当前导航要离开的路由对象
+// router.beforeEach((to, from, next) => {
+//   console.log(to);    //即将要进入的路由对象
+//   console.log(from);  //当前导航要离开的路由对象
   
-  next();             //调用该方法,才能进入下一个钩子
-})
+//   next();             //调用该方法,才能进入下一个钩子
+// })

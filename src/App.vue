@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="header">
-      <p>耳机频道</p>
-      <p>购物车</p>
+      <router-link to="/" tag="p">耳机频道</router-link>
+      <p @click="gotoCar">购物车 <span class="CarList" v-show="list">{{list}}</span></p>
     </div>
     <router-view></router-view>
   </div>
@@ -10,7 +10,26 @@
 
 <script>
   export default {
-    
+    data () {
+      return {
+        car: this.$store.state.addCar
+      }
+    },
+    computed: {
+      list () {
+        if(this.car.length == 0){
+          return ""
+        }else {
+          return this.car.length
+        }
+        
+      }
+    },
+    methods: {
+      gotoCar () {
+        this.$router.push('/cart')
+      }
+    }
   }
 </script>
 
@@ -31,6 +50,18 @@
     p {
       color: #fff;
       line-height: 48px;
+      .CarList {
+        display: inline-block;
+        width: 17px;
+        height: 17px; 
+        background-color: red;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 15px;
+        position: relative;
+        left: 2px;
+        font-size: 12px;
+      }
     }
   }
 }
