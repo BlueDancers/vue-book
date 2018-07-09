@@ -4,20 +4,11 @@
 >
 > 效果图还可以,练练手
 
-## Build Setup
+### vue + vue-router + vuex
 
-``` bash
-# install dependencies
-npm install
+还有一些细节没有实现,后面会完善
 
-# serve with hot reload at localhost:8080
-npm run dev
+![](http://on7r0tqgu.bkt.clouddn.com/FrZG_klvhO9Jm6XTjTBOm2BDd1ge.png)
 
-# build for production with minification
-npm run build
+![](http://on7r0tqgu.bkt.clouddn.com/Fo875jAbg2MgFauOUwwySg97uR8k.png)
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
