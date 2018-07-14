@@ -49,6 +49,7 @@ export default new Vuex.Store({
           count: 1
         }) //当加入购物车的时候 添加字段 count (数量) 以便于购物车的实现
       }
+      alert("您已加入购物车")
     },
 
     deleteCart(state, id) { //删除购物车里面的商品
@@ -59,15 +60,17 @@ export default new Vuex.Store({
     addCart(state, id) {
       var index = state.addCar.findIndex(item => item.id === id)   //获取数组的下标
       var count = ++state.addCar[index].count; //数量+1
-
       Vue.set(state.addCar[index], "count", count)
-      //vue.set(state.addCar,index)
     },
 
     miunsCart(state, id) {
       var index = state.addCar.findIndex(item => item.id === id)
       console.log("数组的位置是" + index);
-      state.addCar[index].count--;
+      if (state.addCar[index].count == 0) {
+        alert("数量不可以为0")
+      }else {
+        state.addCar[index].count--;
+      }
     },
   },
   actions: { //actions适应异步操作

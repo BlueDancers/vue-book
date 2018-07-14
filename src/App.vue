@@ -4,7 +4,10 @@
       <router-link to="/" tag="p">耳机频道</router-link>
       <p @click="gotoCar">购物车 <span class="CarList" v-show="list">{{list}}</span></p>
     </div>
-    <router-view></router-view>
+    <div class="router">
+      <router-view></router-view>
+    </div>
+    
   </div>
 </template>
 
@@ -35,21 +38,26 @@
 
 <style lang="less">
 *{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 @appHeader:rgba(0,0,0,.8);
 #app{
   .header {
+    position: fixed;
+    top: 0;
     background-color: @appHeader;
     height: 48px;
+    width: 97.5%;
     display: flex;
     justify-content: space-between;
-    padding: 0% 2%;
-    cursor: pointer;
+    padding: 0% 1%;
+    z-index: 100000;
+
     p {
       color: #fff;
       line-height: 48px;
+      cursor: pointer;
       .CarList {
         display: inline-block;
         width: 17px;
@@ -63,6 +71,9 @@
         font-size: 12px;
       }
     }
+  }
+  .router {
+    margin-top: 60px;
   }
 }
 </style>

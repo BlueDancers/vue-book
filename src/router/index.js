@@ -9,19 +9,22 @@ export default new Router({
   mode:"history",
   routes: [
     {
-      path: '/cart',
-      name: 'cart',
-      component: cart
+        path: '/cart',
+        name: 'cart',
+        component: cart,
+        meta :{ title: "购物车"}
     },
     {
         path: '/',
         name: 'list',
-        component: list
+        component: list,
+        meta: { title: "商品列表" }
     },
     {
-      path: '/product/:id',
-      name: 'product',
-      component: product
+        path: '/product/:id',
+        name: 'product',
+        component: product,
+        meta: { title: "商品详情" }
     }
   ]
 })

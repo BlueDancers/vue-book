@@ -1,14 +1,14 @@
-<template>
++0<template>
   <div class="product">
     <div class="product-image">
-      <img :src="list.image" alt="">
+      <img :src="list.image" :alt="list.name">
     </div>
     <div class="product-info">
       <div class="product-text">
         <p class="product-text-name">{{list.name}}</p>
         <p class="product-text-cost">￥{{list.cost}}</p>
         <p class="product-text-button">
-           <button>加入购物车</button>
+           <button @click="addCart(list)">加入购物车</button>
         </p>
       </div>
         
@@ -20,8 +20,6 @@
   export default {
     created() {
       //let id = this.$route.params.id*1   //获取路由的标记
-      console.log("初始化");
-      
       let id = parseInt(this.$route.params.id)
       let list;                        //储存查看的商品
       
@@ -39,6 +37,11 @@
     data () {
       return {
         list: []    //获取商品
+      }
+    },
+    methods: {
+      addCart (data) {
+        this.$store.commit('setaddCar',data)
       }
     }
   }

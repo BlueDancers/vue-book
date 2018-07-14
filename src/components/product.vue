@@ -43,7 +43,12 @@ export default {
   },
   methods: {
     lookProduct(list) {
-      this.$router.push('./product/' + list.id)
+      let lists =list.id;
+      //this.$router.push('./product/' + list.id)
+      //this.$router.push({name : 'product',params: { id : list.id }})
+      this.$router.push({ path: `/product/${list.id}` })
+      
+      console.log("路由跳转");
     },
     handleCart (item) {
       this.$store.commit('setaddCar',item)       //使用vuex添加进购物车  
