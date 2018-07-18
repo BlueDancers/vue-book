@@ -1,24 +1,24 @@
 'use strict'
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'production' //production生产模式
 
-const ora = require('ora')
-const rm = require('rimraf')
-const path = require('path')
-const chalk = require('chalk')
-const webpack = require('webpack')
-const config = require('../config')
+const ora = require('ora')            //控制输出日志
+const rm = require('rimraf')          //以包的形式包装rm -rf命令
+const path = require('path')          //node.js的path模块 
+const chalk = require('chalk')        //控制shell里面输出的字体的颜色
+const webpack = require('webpack')    //进入webpack配置,以便于打包
+const config = require('../config')   //假如引入目录的话 会默认去找index.js 找不到会报错
 const webpackConfig = require('./webpack.prod.conf')
 
-const spinner = ora('building for production...')
+const spinner = ora('building for production...')     
 spinner.start()
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
+rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {     //在打包之前把之前的打包项目清除掉
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
-    spinner.stop()
-    if (err) throw err
+    spinner.stop()        //打包完成后停止
+    if (err) throw err  
     process.stdout.write(stats.toString({
       colors: true,
       modules: false,
@@ -32,7 +32,7 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       process.exit(1)
     }
 
-    console.log(chalk.cyan('  Build complete.\n'))
+    console.log(chalk.cyan('  Build complete.\n'))   //这里是打包完成后进行输出
     console.log(chalk.yellow(
       '  Tip: built files are meant to be served over an HTTP server.\n' +
       '  Opening index.html over file:// won\'t work.\n'

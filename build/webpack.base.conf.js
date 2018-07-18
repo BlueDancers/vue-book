@@ -23,29 +23,29 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json'],       //设置这些后缀名的可以自动忽略
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     }
   },
-  module: {
-    rules: [
+  module: {   //定义模块
+    rules: [  //定义规则
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue-loader',                    //vue的加载插件
         options: vueLoaderConfig
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'babel-loader', //es6解析插件  babel基本都是解析es6的插件
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+        loader: 'url-loader',                               //进行base的编码
         options: {
-          limit: 10000,
+          limit: 10000,                                     //10000都会进行base打包
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },

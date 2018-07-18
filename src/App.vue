@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="header">
-      <router-link to="/" tag="p">耳机频道</router-link>
+      <router-link to="/" tag="p">Sony</router-link>
       <p @click="gotoCar">购物车 <span class="CarList" v-show="list">{{list}}</span></p>
     </div>
     <div class="router">

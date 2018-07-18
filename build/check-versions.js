@@ -1,6 +1,6 @@
 'use strict'
-const chalk = require('chalk')
-const semver = require('semver')
+const chalk = require('chalk')    
+const semver = require('semver')  //控制版本号
 const packageConfig = require('../package.json')
 const shell = require('shelljs')
 
@@ -30,7 +30,7 @@ module.exports = function () {
   for (let i = 0; i < versionRequirements.length; i++) {
     const mod = versionRequirements[i]
 
-    if (!semver.satisfies(mod.currentVersion, mod.versionRequirement)) {
+    if (!semver.satisfies(mod.currentVersion, mod.versionRequirement)) { //这里是semver进行版本校验 
       warnings.push(mod.name + ': ' +
         chalk.red(mod.currentVersion) + ' should be ' +
         chalk.green(mod.versionRequirement)

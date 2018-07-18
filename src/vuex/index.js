@@ -49,7 +49,7 @@ export default new Vuex.Store({
           count: 1
         }) //当加入购物车的时候 添加字段 count (数量) 以便于购物车的实现
       }
-      alert("您已加入购物车")
+      //alert("您已加入购物车")
     },
 
     deleteCart(state, id) { //删除购物车里面的商品

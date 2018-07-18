@@ -17,7 +17,7 @@
        </div>
 
         <div class="list-header-filter">
-        <span>品牌:</span>
+        <span>排序:</span>
         <span class="list-control-filter-item" :class="{on:item === filterSort}" @click="handleFilterSort(item)" v-for="item in sort" :key="item">
           {{item}}
         </span>
@@ -34,60 +34,82 @@
 import Product from '../components/product'
 export default {
   created() {
-    this.$store.dispatch('getProduct').then(()=> {            //所有都建立在异步then获取数据上
-      this.list = this.$store.state.product                   //获取商品列表
-      this.brand = this.$store.getters.getProductName         //获取商品名
-      this.color = this.$store.getters.getProductColor        //获取商品颜色
-      this.isShow = true;                                     //所有过滤行vuex里面处理,数据加载完成 显示页面
+    this.$store.dispatch('getProduct').then(() => {
+      //所有都建立在异步then获取数据上
+      this.list = this.$store.state.product //获取商品列表
+      this.brand = this.$store.getters.getProductName //获取商品名
+      this.color = this.$store.getters.getProductColor //获取商品颜色
+      this.isShow = true //所有过滤行vuex里面处理,数据加载完成 显示页面
     })
   },
-    components: {
+  components: {
     Product
   },
   data: function() {
     return {
-      list:[],                          //源数据
-      brand: [],                        //品牌   
-      color:[],                         //顏色
-      sort: ["默认","销量","价格"],      //排序方式
-      isShow:false,                     //商品list数据存在才变成true
-      filterBrand:null,                 //控制品牌过滤
-      filterColor:null,
-      filterSort:null
+      list: [], //源数据
+      brand: [], //品牌
+      color: [], //顏色
+      sort: ['默认', '销量', '价格'], //排序方式
+      isShow: false, //商品list数据存在才变成true
+      filterBrand: null, //控制品牌过滤
+      filterColor: null, //颜色控制器
+      filterSort: null //排序控制器
     }
   },
   computed: {
-    brandList () {
-      let list = [...this.list];   //克隆数据
-      if(this.filterBrand != null){
-        list = list.filter(item => item.brand === this.filterBrand)     //进行商品类型过滤
+    brandList() {
+      let list = [...this.list] //克隆数据
+      if (this.filterBrand != null) {
+        list = list.filter(item => item.brand === this.filterBrand) //进行商品类型过滤
       }
-      if(this.filterColor != null) {
-        list = list.filter(item => item.color === this.filterColor)     //进行商品颜色过滤
+      if (this.filterColor != null) {
+        list = list.filter(item => item.color === this.filterColor) //进行商品颜色过滤
       }
-      return list;
+      if (this.filterSort == null) {        //null为默认排序
+        console.log("现在是默认排序");
+      } else if (this.filterSort == '销量') {   //销量排序
+        list = list.sort((a,b) => {
+          return a.sales - b.sales
+        });
+        console.log(list);
+      } else if (this.filterSort == '价格降') {   //价格升序
+        list = list.sort((a,b) => {
+          return a.cost - b.cost;
+        })
+        console.log(list);
+      } else if (this.filterSort == '价格升') {   //价格降序
+        list = list.sort((a,b) => {
+          return b.cost - a.cost;
+        })
+      }    
+      return list
     }
   },
   methods: {
-    handleFilterBrand (brand) {           //品牌选择器
-      if(this.filterBrand == brand){
+    handleFilterBrand(brand) {
+      //品牌选择器
+      if (this.filterBrand == brand) {
         this.filterBrand = null
-      }else {
-        this.filterBrand = brand 
+      } else {
+        this.filterBrand = brand
       }
     },
-    handleFilterColor (color) {          //颜色选择器
-      if(this.filterColor == color){
+    handleFilterColor(color) {
+      //颜色选择器
+      if (this.filterColor == color) {
         this.filterColor = null
-      }else {
-        this.filterColor = color  
+      } else {
+        this.filterColor = color
       }
     },
-    handleFilterSort (sort) {           //排序选择器
-      if(this.filterSort == sort){
+    handleFilterSort(sort) {
+      //排序选择器
+      console.log(sort);
+      if (this.filterSort == sort) {
         this.filterSort = null
-      }else {
-        this.filterSort = sort 
+      } else {
+        this.filterSort = sort
       }
     }
   }
@@ -125,5 +147,4 @@ export default {
     }
   }
 }
-
 </style>

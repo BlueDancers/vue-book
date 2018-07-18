@@ -12,7 +12,7 @@
         <div class="product-add-cart">
           <button @click.prevent="handleCart(item)">加入购物车</button> 
         </div>
-      </div> 
+      </div>
   </div>
 </template>
 
@@ -47,7 +47,6 @@ export default {
       //this.$router.push('./product/' + list.id)
       //this.$router.push({name : 'product',params: { id : list.id }})
       this.$router.push({ path: `/product/${list.id}` })
-      
       console.log("路由跳转");
     },
     handleCart (item) {
